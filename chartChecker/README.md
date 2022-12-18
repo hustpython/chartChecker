@@ -1,18 +1,20 @@
-# Vue 3 + TypeScript + Vite
+  ChartChecker
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+#### 背景介绍
+- 问题定位：
+ 工作中使用chart包部署k8s应用，在写chart模板时经常遇到yaml模板格式有问题，但是helm的日志显示的文件的行数是压缩后的行数没法与实际的yaml文件行数对应导致问题难以定位。
 
-## Recommended IDE Setup
+- 模板生成：
+chart包的组成相对固定，且原生的helm命令支持生成chart模板，想利用helm和前端结合更好的写chart模板。
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- 集成更多k8s相关插件：k8s与很多好用的插件比如kube-lint可以检查模板中可能存在的安全，配置问题。结合这些插件可以更好的发现模板的问题。
 
-## Type Support For `.vue` Imports in TS
+#### 当前实现的功能
+- 打开/拖入文件夹显示：支持打开/拖拽文件夹显示文件的内容。
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- yaml-lint：利用js的yaml-lint可以自动检查打开的yaml文件格式是否有问题。
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+  ![](./cutimage/1.png) 
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+#### TODO
+还有很多功能要做啦
